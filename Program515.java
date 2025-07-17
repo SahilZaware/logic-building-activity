@@ -1,0 +1,60 @@
+class node
+{
+    public int data;
+    public node next;
+    public node prev;
+
+    public node(int x)
+    {
+        this.data = x;
+        this.next = null;
+        this.prev = null;
+    }
+}
+class DoublyCL
+{
+    public node head;
+    public node tail;
+    public int iCount;
+
+    public DoublyCL()
+    {
+        this.head = null;
+        this.tail = null;
+        this.iCount = 0;
+    }
+
+    public void InsertFirst(int no)
+    {
+        node newn = null;
+        newn = new node(no);
+
+        if((head == null) && (tail == null))
+        {
+            head = newn;
+            tail = newn;
+        }
+        else
+        {
+            newn.next = head;
+            head.prev = newn;
+            head = newn;
+        }
+        tail.next = head;
+        head.prev = tail;
+
+        iCount++;
+    }
+}
+
+class Program515
+{
+    public static void main(String[] args)
+    {
+        DoublyCL dobj = new DoublyCL();
+
+        dobj.InsertFirst(51);
+        dobj.InsertFirst(21);
+        dobj.InsertFirst(11);
+    }
+}
